@@ -264,7 +264,7 @@ function form( $instance ) {
               <?php
 			}
 		 endwhile; ?>
-            </ul>
+            </ul><a href="http://amtyera.net/">*</a>
 	<?php
 		/* After widget (defined by themes). */
 		echo $after_widget;
