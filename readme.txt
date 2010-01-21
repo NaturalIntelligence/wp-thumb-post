@@ -1,10 +1,10 @@
 === amty thumb recent ===
 Contributors: Amit Gpta
 Donate link: http://amtyera.net/
-Tags: thumbnail, recent, post, amtyera, image
+Tags: thumbnail, recent, post, amtyera, image, customizable
 Requires at least: 2.0.2
 Tested up to: 2.8.6
-Stable tag: 2.0
+Stable tag: 3.0
 
 Shows resently published posts on your blog with thumbnail. This is fully customizable.
 
@@ -14,6 +14,8 @@ This plugin shows resently published posts on your blog with thumbnail. You may 
 Fully customizable. You may control thumbnail size, Title length, apperance, etc.
 
 Features over other plugins:
+
+
 1. Can extract an image which is either on same server or on remote server
 2. Can extract attached images
 3. If an image is deleted from the post it automatically shows 2nd image as thumbnail
@@ -22,9 +24,17 @@ Features over other plugins:
 
 
 Note: 
+
+
 This plugins works for IMG tag those are written in ur post like
+
+
 	<img src="................
+	
+	
 But if you set some other attributes like width, height, style. This plugins become helpless to read that image
+
+
 	<img style="...." src=" ...."
 
 
@@ -78,4 +88,24 @@ Check your CSS. Since it inherits CSS properties. And some properties may disarr
 5. Mixed View
 `/tags/2.0/12.jpg`
 `/tags/2.0/13.jpg`
+
+== Changelog ==
+
+= 3.0 =
+* 20 times faster than previous version.
+* Do not increase page size very much.
+
+
+= 2.0 =
+* Display first image of recently added posts with subtitle.
+* Display default image
+* Donot reduce the image size. Just resize its height & width.
+
+== Upgrade Notice ==
+
+= 3.0 =
+Along with all features of previous version this version takes less time in loading. This is 20 times faster than previous version
+
+= 2.0 =
+This version reported slow loading time.  Upgrade immediately.
 

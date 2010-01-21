@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Amty Thumbnail Recent Posts
-Plugin URI: http://amtyera.net/thumb_recent
+Plugin URI: http://amtyera.net/article/2010/01/amty-thumb-recent/
 Description: This plugin shows resently published posts on your blog with thumbnail.
 You may customize it in any way. It extracts first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, apperance,
 
 Author: Amit Gupta
-Version: 2.0
+Version: 3.0
 Author URI: http://amtyera.net/
 */
 
@@ -292,32 +292,33 @@ function lead_img_thumb_post($w=70,$h=70,$b=0,$default_src='',$imagetype) {
         //array output
         foreach($first_image_data as $output) {
 
-	  $style = "style=\"width:".$w."px; height:".$h."px; border:".$b."px solid; margin:1px;\" ";
+	  $style = "style=\"border:".$b."px solid; margin:1px;\" ";
                         //if there is no description use title (filename) instead
                         if (empty($output->post_content) == TRUE)
                                   {$output->post_content = $output->post_title;}
                         //images
 				if (substr($output->post_mime_type, 0, 5) == 'image' && $imagetype = 'uploaded')
-                                 {echo "<img src=\"$output->guid\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
+                                 {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
                         else	//exist on external server or attached image
      				{
 					$attach_img = amty_get_firstimage1($output->guid);
 					if($attach_img != '' && $imagetype = 'attached')	//Image attached as a metadata
-						echo "<img src=\"$attach_img\" $style /> ";
+						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
 					elseif($img !='' && $imagetype = 'referenced')		//image on remote machine
-						echo "<img src=\"$img\" $style /> ";
+						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
 					else{
 						if (substr($output->post_mime_type, 0, 5) == 'image')
-                        	         {echo "<img src=\"$output->guid\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
+                        	         {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
 	                  	      else	//exist on external server or attached image
      						{
 							$attach_img = amty_get_firstimage1($output->guid);
 							if($attach_img = '')	//Image attached as a metadata
-								echo "<img src=\"$attach_img\" $style /> ";
+								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
 							elseif($img !='')		//image on remote machine
-								echo "<img src=\"$img\" $style /> ";
+								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
 							else //Post has no image
-			     					echo "<img src=\"" . $default_src . "\"  $style />";
+			     					echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty_thumb_recent/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $default_src . "\"  $style />";
+			     					//echo "<img src=\" . $default_src . \"  $style />";
 						}//inner else end
 					}//outer else end
 				}
