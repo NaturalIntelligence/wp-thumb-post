@@ -21,7 +21,7 @@ Requires the PHP GD Extension
 
 Outputs the resulting image in JPEG Format
 
-By: Michael John G. Lopez - www.sydel.net
+By: Amit Gupta - http://article-stack.com
 Filename : imgsize.php
 */
 
