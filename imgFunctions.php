@@ -24,7 +24,14 @@ function lead_img_thumb_post($w=70,$h=70,$b=0,$default_src='',$imagetype) {
 		  if($match_count == 0){
 			  $match_count = preg_match_all("/<img[^>]+>/i", $image_data[1]->post_content, $match_array, PREG_PATTERN_ORDER);
 	  		  if($match_count == 0)
-				  $match_count = preg_match_all("/<img[^']*?src=\"([^']*?)\"[^']*?//>/", $image_data[0]->post_content, $match_array, PREG_PATTERN_ORDER);
+				  $match_count = preg_match_all("/<img[^']*?src=\"([^']*?)\"[^']*?\/>/", $image_data[0]->post_content, $match_array, PREG_PATTERN_ORDER);
+				  if($match_count == 0){
+			  		  $match_count = preg_match_all("/youtube.com\/watch\?v=(\S*)/", $image_data[1]->post_content, $match_array, PREG_PATTERN_ORDER);
+					  if($match_count == 0) $match_count = preg_match_all("/youtube.com\/watch\?v=(\S*)/", $image_data[0]->post_content, $match_array, PREG_PATTERN_ORDER);
+					  if($match_count != 0)
+						  $img = 'http://img.youtube.com/vi/' . $match_array[1][0] . '/0.jpg';
+
+}
 	  	}
 	  }
 

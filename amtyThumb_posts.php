@@ -7,7 +7,7 @@ You may customize it in any way. It extracts first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 5.0
+Version: 6.0
 Author URI: http://article-stack.com/
 */
 
@@ -348,7 +348,7 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 			}
 		 endwhile; ?>
             </ul>
-            <a href="<?php echo "http://article-stack.com"; ?>">   </a>
+            <a href="<?php echo "http://article-stack.com"; ?>">*</a>
             <div style="clear:both;"></div>
 	<?php
 }

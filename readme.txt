@@ -4,7 +4,7 @@ Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode
 Requires at least: 2.5
 Tested up to: 3.1
-Stable tag: 5.5
+Stable tag: 6.0
 
 Fully customizable plugin to show recently published posts, random posts and popular posts on your blog with thumbnail.
 
@@ -97,6 +97,10 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 
 
 == Changelog ==
+
+= 6.0 =
+* Bug fix for finding first image.
+* Support for generating thumbnail from youtube video
 
 = 5.5 =
 * Previous version was not able to extract first image, if your wordpress database is not optimized. Now it can work with database which is not optimized.
