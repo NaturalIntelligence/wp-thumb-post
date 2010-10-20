@@ -48,26 +48,26 @@ function lead_img_thumb_post($w=70,$h=70,$b=0,$default_src='',$imagetype) {
                                   {$output->post_content = $output->post_title;}
                         //images
 				if (substr($output->post_mime_type, 0, 5) == 'image' && $imagetype = 'uploaded')
-                                 {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
+                                 {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
                         else	//exist on external server or attached image
      				{
 					$attach_img = amty_get_firstimage1($output->guid);
 					if($attach_img != '' && $imagetype = 'attached')	//Image attached as a metadata
-						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
+						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
 					elseif($img !='' && $imagetype = 'referenced')		//image on remote machine
-						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
+						echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
 					else{
 						if (substr($output->post_mime_type, 0, 5) == 'image')
-                        	         {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
+                        	         {echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $output->guid . "\" alt=\"$output->post_title\" title=\"$output->post_content\" $style />";}
 	                  	      else	//exist on external server or attached image
      						{
 							$attach_img = amty_get_firstimage1($output->guid);
 							if($attach_img = '')	//Image attached as a metadata
-								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
+								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $attach_img . "\" $style /> ";
 							elseif($img !='')		//image on remote machine
-								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
+								echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $img . "\" $style /> ";
 							else //Post has no image
-			     					echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amtyThumb_posts/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $default_src . "\"  $style />";
+			     					echo "<img src=\"" . get_bloginfo ('url') . "/wp-content/plugins/amty-thumb-recent-post/util/imgsize.php?&w=".$w."&h=".$h."&img=" . $default_src . "\"  $style />";
 			     					//echo "<img src=\" . $default_src . \"  $style />";
 						}//inner else end
 					}//outer else end

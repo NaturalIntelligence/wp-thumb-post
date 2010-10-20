@@ -7,7 +7,7 @@ You may customize it in any way. It extracts first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 6.0
+Version: 6.1
 Author URI: http://article-stack.com/
 */
 
