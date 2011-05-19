@@ -3,11 +3,11 @@
 Plugin Name: amtyThumb Posts
 Plugin URI: http://article-stack.com/
 Description: This plugin shows recent / random/ popular posts on your blog with thumbnail.
-You may customize it in any way. It extracts first image of your current post.
+You may customize it in any way. It uses amtyThumb plugin to extracts first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 6.1
+Version: 6.5
 Author URI: http://article-stack.com/
 */
 
@@ -284,7 +284,7 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 	if ( $title != '' )
 			echo $before_title . $title . $after_title;
 	?>
-            	<ul><!-- <?php echo "http://article-stack.com"; ?> -->
+            	<ul style="list-style-type:none;"><!-- <?php echo "http://article-stack.com"; ?> -->
 				<?php
 
 				if ($categoryName != 'All') {

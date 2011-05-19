@@ -3,23 +3,23 @@ Contributors: Amit Gpta
 Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode
 Requires at least: 2.5
-Tested up to: 3.1
-Stable tag: 6.1
+Tested up to: 3.1.2
+Stable tag: 6.5
 
 Fully customizable plugin to show recently published posts, random posts and popular posts on your blog with thumbnail.
 
 == Description ==
 
-This plugin shows recently published posts on your blog with thumbnail. You may customize it in any way. It extracts first image of your current post.
+This plugin shows recently published posts on your blog with thumbnail. You may customize it in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, appearance, etc.
 
 Features over other plugins:
 
 
-1. Can extract an image which is either on same server or on remote server
-2. Can extract attached images
+1. amtyThumb plugin is best to extract any type of image from any post. So this plugin can succefully list recent/random/popular posts with thumbnail (on choice) with customized view.
+2. No need to set separate field for image
 3. If an image is deleted from the post it automatically shows 2nd image as thumbnail
-4. If there is no image in the post it shows default image which can be set.
+4. If there is no image in the post it shows default image which can be set. default image path need to be set in advace.
 5. Appearance is fully customizable through widget panel.
 
 
@@ -94,9 +94,14 @@ For more queries visit [article-stack](http://article-stack.com/other/amty-thumb
 == Screenshots ==
 
 For live example visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
-
+	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+
+= 6.5 =
+* Thumbnail part is separated.
+* Support for amtyThumb plugin to generate thumbs.
 
 = 6.1 =
 * Bug fix for plugin directory name.
@@ -131,6 +136,10 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 * Don't reduce the image size. Just resize its height & width.
 
 == Upgrade Notice ==
+
+= 6.5 =
+* Thumbnail part is separated.
+* Support for amtyThumb plugin to generate thumbs.
 
 = 3.5 =
 Works with more theme. Now more robust, efficient.
