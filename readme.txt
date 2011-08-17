@@ -1,27 +1,33 @@
 === amtyThumb posts ===
 Contributors: Amit Gpta
 Donate link: http://article-stack.com/
-Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode
+Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented
 Requires at least: 2.5
-Tested up to: 3.1.2
-Stable tag: 6.5
+Tested up to: 3.2
+Stable tag: 7.0
 
-Fully customizable plugin to show recently published posts, random posts and popular posts on your blog with thumbnail.
+Fully customizable plugin to show Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail.
 
 == Description ==
 
-This plugin shows recently published posts on your blog with thumbnail. You may customize it in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image of your current post.
+This plugin shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail. You may customize it in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image of your current post.
 Fully customizable. You may control thumbnail size, Title length, appearance, etc.
+If you don't have any image in a post, you can set default image too.
 
-Features over other plugins:
+= Features over other plugins =
 
+1. amtyThumb plugin is best to extract any type of image from any post.
+2. No need to set separate field for image in your post.
+3. If an image is deleted from the post it automatically shows 2nd image as thumbnail.
+4. If there is no image in the post it shows default image which can be set. default image path need to be set in advance.
+5. Appearance is fully customizable through widget panel or from short code.
+6. Best for beginner to masters
 
-1. amtyThumb plugin is best to extract any type of image from any post. So this plugin can succefully list recent/random/popular posts with thumbnail (on choice) with customized view.
-2. No need to set separate field for image
-3. If an image is deleted from the post it automatically shows 2nd image as thumbnail
-4. If there is no image in the post it shows default image which can be set. default image path need to be set in advace.
-5. Appearance is fully customizable through widget panel.
+= Dependency =
 
+1. amtyThumb plugin must be installed for image extraction.
+2. WP-PostViews plugin must be installed to display mostly & rarely viewed posts.
+3. Recently Viewed Posts plugin must be installed to display recently viewed posts.
 
 == Installation ==
 
@@ -36,30 +42,34 @@ e.g.
 You may also add amtyThumb_post anywehre in your post or page using short code. For his;
 
 	[amtyThumb show_thumb='no']
-	[amtyThumb display_type='Horizontally' max_post ='3']
+	[amtyThumb max_post ='3']
 
 Possible parameters with default values
 
 	'title' => 'Amty Thumb Posts', //'' to hide it
-	'before_title' => '<h2 class="widgettitle">',
+	'before_title' => '<h2>',
 	'after_title' => '</h2>',
-	'thumb_width' => '70', 
-	'thumb_height' => '70', 
-	'thumb_border' => '1', 
-	'show_thumb' => 'yes',
-	'image_type' => 'any', //'attached','any','referenced', 'uploaded'
-	'imagepath' => '', 
-	'pretag' => '', 
-	'posttag' => '', 
-	'title_len' => 30, 
-	'display_type' => 'Vertically', //'Horizontally','Vertically'
-	'display_first' => 'image', //'image','title'
-	'box_width' => '50', 
-	'title_box_height' => '50', 
-	'box_border' => '0', 
-	'max_post' =>  '5', 
+	'thumb_width' => '70',
+	'thumb_height' => '70',
+	'default_img_path' => '', //should be set
+	'pretag' => '',
+	'template' => '',	//<li><img src="%POST_THUMB%" /><a href="%POST_URL%"  title="%POST_TITLE%">%POST_TITLE%</a></li>				 
+	'posttag' => '',
+	'title_len' => 30,
+	'max_post' =>  10,
 	'category' => 'All',
-	'widgettype' => 'Recent' //'Recent','Random','Popular'
+	'widgettype' => 'Recently Written' //'Recently Written','Random','Most Commented'
+
+= Template Parameter =
+
+%VIEW_COUNT% - Display number of times post is visited.
+%POST_THUMB% - Display thumbnail 
+%POST_URL% - Display post param link
+%POST_TITLE% - Display post title
+%POST_CONTENT% - Display post content
+%POST_EXCERPT% - Display post excerpt
+%POST_LAST_VIEWED% - Supported only when displaying recently viewed posts
+%POST_DATE%	- Not supported when displaying recently viewed posts
 
 
 For any doubt or query visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
@@ -73,21 +83,14 @@ For any doubt or query visit [article-stack](http://article-stack.com/other/amty
 
 Check whether you had optimized your database. Remove sub versions of your posts. It'll not only help to extract exact image but will decrease loading time of your blog.
 
-= When i set thumbnail to display in right they are not aligned properly =
-
-Check your CSS. Since it inherits CSS properties. And some properties may disarrange the appearance you may need to change some properties of your CSS.
-
 = Still not able to see resized image =
 
 Check whether you have PHP GD library installed.
 
 = Does it supports all image types? =
 
-No, It supports only jpg,png and gif. I hadn't tested it to others.
+No, It supports only jpg,png and gif. I hadn't tested it for others.
 
-= Posts title are overlapping =
-
-You'll have to do some setting through widget control panel like text height, text length etc. Then only you can stop overlapping.
 
 For more queries visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
 
@@ -97,6 +100,12 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+= 7.0.0 =
+* Template support for highly customized view.
+* Many changes related to appearance
+* Display Mostly, Rarely & Recently Viewed posts
+* Support for WP-PostViews & Recently Viewed Posts plugins.
 
 
 = 6.5 =
@@ -137,15 +146,8 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 
 == Upgrade Notice ==
 
-= 6.5 =
-* Thumbnail part is separated.
-* Support for amtyThumb plugin to generate thumbs.
-
-= 3.5 =
-Works with more theme. Now more robust, efficient.
-
-= 3.0 =
-Along with all features of previous version this version takes less time in loading. This is 20 times faster than previous version
-
-= 2.0 =
-This version reported slow loading time.  Upgrade immediately.
+= 7.0.0 =
+* Template support for highly customized view.
+* Many changes related to appearance
+* Display Mostly, Rarely & Recently Viewed posts
+* Support for WP-PostViews & Recently Viewed Posts plugins.
