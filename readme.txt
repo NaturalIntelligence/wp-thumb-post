@@ -4,7 +4,7 @@ Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented
 Requires at least: 2.5
 Tested up to: 3.2
-Stable tag: 7.0
+Stable tag: 7.1.0
 
 Fully customizable plugin to show Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail.
 
@@ -62,14 +62,15 @@ Possible parameters with default values
 
 = Template Parameter =
 
-%VIEW_COUNT% - Display number of times post is visited.
-%POST_THUMB% - Display thumbnail 
-%POST_URL% - Display post param link
-%POST_TITLE% - Display post title
-%POST_CONTENT% - Display post content
-%POST_EXCERPT% - Display post excerpt
-%POST_LAST_VIEWED% - Supported only when displaying recently viewed posts
-%POST_DATE%	- Not supported when displaying recently viewed posts
+1. %VIEW_COUNT% - Display number of times post is visited.
+2. %POST_THUMB% - Display thumbnail 
+3. %POST_URL% - Display post param link
+4. %POST_TITLE% - Display post title
+5. %POST_CONTENT% - Display post content
+6. %POST_EXCERPT% - Display post excerpt
+7. %POST_LAST_VIEWED% - Supported only when displaying recently viewed posts
+8. %POST_DATE%	- Not supported when displaying recently viewed posts
+9. %SHORT_TITLE% - Display short title.
 
 
 For any doubt or query visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
@@ -100,6 +101,9 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+= 7.1.0 =
+* Addtion of %SHORT_TITLE% template code to display short title
 
 = 7.0.0 =
 * Template support for highly customized view.
@@ -146,8 +150,5 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 
 == Upgrade Notice ==
 
-= 7.0.0 =
-* Template support for highly customized view.
-* Many changes related to appearance
-* Display Mostly, Rarely & Recently Viewed posts
-* Support for WP-PostViews & Recently Viewed Posts plugins.
+= 7.1.0 =
+* Addtion of %SHORT_TITLE% template code to display short title

@@ -39,6 +39,7 @@ class amtyThumb_posts extends WP_Widget {
 		/* Strip tags for title and width & Height to remove HTML (important for text inputs). */
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['titlelen'] = strip_tags( $new_instance['titlelen'] );
+		$instance['shortenchar'] = strip_tags( $new_instance['shortenchar'] );//shortenchar
 		$instance['maxpost'] = strip_tags( $new_instance['maxpost'] );
 		$instance['width'] = strip_tags( $new_instance['width'] );
 		$instance['height'] = strip_tags( $new_instance['height'] );		
@@ -65,7 +66,8 @@ function form( $instance ) {
 					 'pretag' => '<ul>',
 					 'template' => '<li><img src="%POST_THUMB%" /><a href="%POST_URL%"  title="%POST_TITLE%">%POST_TITLE%</a></li>',
 					 'posttag' => '</ul>',
-					 'titlelen' => 50,
+					 'titlelen' => 30,
+					 'shortenchar' => '...',
 					 'maxpost' =>  10,
 					 'category' => 'All',
 					 'widgettype' => 'Recently Written'
@@ -112,7 +114,7 @@ function form( $instance ) {
 			<input id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" value="<?php echo $instance['height']; ?>" style="width:30px;" />
 		</p>
 
-		<!-- Show default image? Checkbox -->
+		<!-- Show default image Checkbox -->
 		<?php /*<p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['show_default'], true ); ?> id="<?php echo $this->get_field_id( 'show_default'); ?>" name="<?php echo $this->get_field_name( 'show_default'); ?>" />
 			<label for="<?php echo $this->get_field_id( 'show_default' ); ?>"><?php _e('Display default image?', 'amtyThumb_posts'); ?></label>
@@ -143,6 +145,9 @@ function form( $instance ) {
 		<!-- Length: Text Input -->
 			<label for="<?php echo $this->get_field_id( 'titlelen' ); ?>"><?php _e('Title Length(in number of chars):', 'amtyThumb_posts'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'titlelen' ); ?>" name="<?php echo $this->get_field_name( 'titlelen' ); ?>" value="<?php echo $instance['titlelen']; ?>" style="width:30px;" />
+			<br />
+			<label for="<?php echo $this->get_field_id( 'shortenchar' ); ?>"><?php _e('Text to append in last of short title:', 'amtyThumb_posts'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'shortenchar' ); ?>" name="<?php echo $this->get_field_name( 'shortenchar' ); ?>" value="<?php echo $instance['shortenchar']; ?>" style="width:30px;" />
 		</p>
 		<hr />
 		Powered by <a href="article-stack.com">article-stack</a> & <a href="thinkzarahatke.com">thinkzarahatke</a>.
@@ -162,6 +167,7 @@ function form( $instance ) {
 		$template = $instance['template'];
 		$posttag = $instance['posttag'];			
 		$titlelen = $instance['titlelen'];				//Stripping Post title for better display; if 0 then no stripping
+		$shortenchar = $instance['shortenchar'];
 		$categoryName = $instance['category'];		//limiting search to a particular category
 		$widgetType = $instance['widgettype'];		//Recent/random/popular etc.
 		/* Before widget (defined by themes). */
@@ -169,7 +175,7 @@ function form( $instance ) {
 		echo $before_widget;
 		
 		
-		displayPosts($before_title ,$after_title,$title, $width ,$height ,$maxpost ,$default_img_path,$pretag ,$template,$posttag,$titlelen ,$categoryName ,$widgetType);
+		displayPosts($before_title ,$after_title,$title, $width ,$height ,$maxpost ,$default_img_path,$pretag ,$template,$posttag,$titlelen,$shortenchar ,$categoryName ,$widgetType);
 		/* After widget (defined by themes). */
 		echo $after_widget;
 	}
@@ -186,17 +192,18 @@ function amtyThumb_shortcode( $attr, $content = null ) {
 					 'template' => '',					 
 					 'posttag' => '',
 					 'title_len' => 30,
+					 'shortenchar' => '...',
 					 'max_post' =>  10,
 					 'category' => 'All',
 					 'widgettype' => 'Recently Written' //'Recent','Random','Most Commented'
 					 ), $attr ) );
 
-displayPosts($before_title, $after_title,$title, $thumb_width,$thumb_height,$max_post,$default_img_path,$pretag,$template,$posttag,$title_len,$category,$widgettype);
+displayPosts($before_title, $after_title,$title, $thumb_width,$thumb_height,$max_post,$default_img_path,$pretag,$template,$posttag,$title_len,$shortenchar,$category,$widgettype);
 
 }
 
 
-function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$categoryName = 'All',$widgetType = 'Recent'){
+function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$shortenchar='...',$categoryName = 'All',$widgetType = 'Recent'){
 	global $wpdb;
 	if ( $title != '' ){
 		echo $before_title . $title . $after_title;
@@ -208,7 +215,6 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 	}else{
 			$category = '';
 	}
-	
 
 	if($widgetType == 'Recently Written')
 		$amty_posts = get_posts($category . "showposts=" . $maxpost . "&orderby=date");
@@ -221,7 +227,7 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 	elseif($widgetType == 'Least Viewed')
 		$amty_posts = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."' AND post_type = 'post' AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views ASC LIMIT $maxpost");
 	elseif($widgetType == 'Recently Viewed')
-		get_recently_viewed_posts_with_thumbs($maxpost,$template);
+		get_recently_viewed_posts_with_thumbs($maxpost,$template,$titlelen,$shortenchar);
 	$temp = "";
 	
 		 if($amty_posts) {
@@ -231,12 +237,16 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 				//Decorating Post title
 				//$ptitle = get_the_title($post);
 				$ptitle = $post->post_title;
+				
 				if($titlelen != 0)
 				{
 				  if (strlen($ptitle)> $titlelen )
-					{
-							$ptitle = substr($ptitle,0,$titlelen ) . "...";
-					}
+				  {
+					$stitle = substr($ptitle,0,$titlelen ) . $shortenchar;
+				  }
+				  else{
+					$stitle = $ptitle;
+				  }
 				}
 				
 				//'<li><img src="%POST_THUMB%" /><a href="%POST_URL%"  title="%POST_TITLE%">%POST_TITLE%</a></li>'
@@ -261,6 +271,7 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 					$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, $chars);
 
 					$temp = str_replace("%POST_TITLE%", $ptitle, $temp);
+					$temp = str_replace("%SHORT_TITLE%", $stitle, $temp);
 					$temp = str_replace("%POST_EXCERPT%", $post_excerpt, $temp);
 					$temp = str_replace("%POST_CONTENT%", $post->post_content, $temp);
 					$temp = str_replace("%POST_URL%", get_permalink($post->ID), $temp);
@@ -305,7 +316,7 @@ function lead_img_thumb_post($w=70,$h=70,$default_src='',$post_id) {
 }//function end
 
 //if(!function_exists('get_recently_viewed_posts')) {
-function get_recently_viewed_posts_with_thumbs( $max_shown = 10 , $template) {
+function get_recently_viewed_posts_with_thumbs( $max_shown = 10 , $template,$titlelen,$shortenchar = '...') {
 
 		if ( $max_shown + 0 > 0 );
 		else $max_shown = 10;
@@ -344,11 +355,26 @@ function get_recently_viewed_posts_with_thumbs( $max_shown = 10 , $template) {
 			}
 			$post_views =  get_post_meta($item[0], 'views', true);
 			if ( $item[1] != recently_viewed_posts_get_remote_IP() ) {
+				//Decorating Post title
+				//$ptitle = get_the_title($post);
+				$ptitle =get_the_title( $item[0] );
+				
+				if($titlelen != 0)
+				{
+				  if (strlen($ptitle)> $titlelen )
+				  {
+					$stitle = substr($ptitle,0,$titlelen ) . $shortenchar;
+				  }
+				  else{
+					$stitle = $ptitle;
+				  }
+				}
 				$search = array( 
 					"%VIEW_COUNT%",
 					"%POST_THUMB%", 
 					"%POST_URL%",
 					"%POST_TITLE%",
+					"%SHORT_TITLE%",
 					"%POST_CONTENT%",
 					"%POST_EXCERPT%",
 					"%POST_LAST_VIEWED%"
@@ -357,7 +383,8 @@ function get_recently_viewed_posts_with_thumbs( $max_shown = 10 , $template) {
 					$post_views,
 					lead_img_thumb_post($width ,$height ,$default_img_path , $item[0] ),
 					get_permalink( $item[0] ),
-					get_the_title( $item[0] ),
+					$ptitle,
+					$stitle,
 					$post_content,
 					$post_excerpt,
 					recently_viewed_posts_time_since( $item[2] )
