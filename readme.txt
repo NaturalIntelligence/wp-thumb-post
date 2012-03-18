@@ -1,33 +1,41 @@
 === amtyThumb posts ===
 Contributors: Amit Gpta
 Donate link: http://article-stack.com/
-Tags: thumbnail, recent, random, popular, post, amty, image, customizable, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented
-Requires at least: 2.5
+Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
+Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 7.1.0
+Stable tag: 8.0.0
 
 Fully customizable plugin to show Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail.
 
 == Description ==
 
-This plugin shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail. You may customize it in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image of your current post.
+This plugin shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail. You can customize it's view in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image for a post.
+
 Fully customizable. You may control thumbnail size, Title length, appearance, etc.
 If you don't have any image in a post, you can set default image too.
+
+You can display posts for following with single plugin.
+1. What other users are reading now.
+2. Highly discussed posts
+3. Highly visited posts
+4. Random pick or pick of the day.
+5. Untouched articles
+6. Recently submitted posts
+
 
 = Features over other plugins =
 
 1. amtyThumb plugin is best to extract any type of image from any post.
 2. No need to set separate field for image in your post.
-3. If an image is deleted from the post it automatically shows 2nd image as thumbnail.
-4. If there is no image in the post it shows default image which can be set. default image path need to be set in advance.
+4. If there is no image in the post it can show default image.
 5. Appearance is fully customizable through widget panel or from short code.
-6. Best for beginner to masters
+6. You can test plugin through admin page.
+7. List posts : You can list posts sorted by number of comments, views, last visted time etc. It'll help you
 
-= Dependency =
+= Dependency & Usage=
 
 1. amtyThumb plugin must be installed for image extraction.
-2. WP-PostViews plugin must be installed to display mostly & rarely viewed posts.
-3. Recently Viewed Posts plugin must be installed to display recently viewed posts.
 
 == Installation ==
 
@@ -66,12 +74,16 @@ Possible parameters with default values
 2. %POST_THUMB% - Display thumbnail 
 3. %POST_URL% - Display post param link
 4. %POST_TITLE% - Display post title
-5. %POST_CONTENT% - Display post content
+5. %POST_CONTENT% - Display stripped post content
 6. %POST_EXCERPT% - Display post excerpt
-7. %POST_LAST_VIEWED% - Supported only when displaying recently viewed posts
+7. %POST_AUTHOR% - Display post author
 8. %POST_DATE%	- Not supported when displaying recently viewed posts
 9. %SHORT_TITLE% - Display short title.
+10. %COMMENTS_COUNT% - Number of comments
 
+= Functions =
+1. getAmtyViewCount(post_id) to get number of views.
+2. getLastVisitedTime(post_id) to get last visit time.
 
 For any doubt or query visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
 
@@ -101,6 +113,14 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+= 8.0.0 =
+* change in template codes for better customized apperance
+* removed dependecny from 2 external plugins for analysing number of views and last visit time.
+* Now you can display stripped post content
+* extra functions to get views count or last visit time
+* admin panel for admin to view posts stats.
+* small code imporvment to spped up processing
 
 = 7.1.0 =
 * Addtion of %SHORT_TITLE% template code to display short title
