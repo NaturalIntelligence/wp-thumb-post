@@ -283,8 +283,8 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 					//Do nothing
 				}else{
 					$imgpath = lead_img_thumb_post($width ,$height ,$default_img_path , $post->ID );
-					echo "<br />" . $imgpath;
-					//$temp = str_replace("%POST_THUMB%", $imgpath , $temp);
+					//echo "<br />" . $imgpath;
+					$temp = str_replace("%POST_THUMB%", $imgpath , $temp);
 				}
 				
 				$output .= $temp;
@@ -358,6 +358,16 @@ add_action('admin_menu', 'amtyThumbPosts_admin_actions');
  
  function getLastVisitedTime($pid){
 	$time = get_post_meta($pid,'amtylastviewed', true);
+	if($time > 0 )
+		return date("d-M-Y h:i:s",$time);
+	else
+		return '';
+ }
+ 
+  function getLastVisitedInterval($pid){
+	$time = get_post_meta($pid,'amtylastviewed', true);
+	$currenttime = time();
+	
 	if($time > 0 )
 		return date("d-M-Y h:i:s",$time);
 	else

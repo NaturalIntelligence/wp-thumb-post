@@ -4,13 +4,13 @@ Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
 Requires at least: 3.0
 Tested up to: 3.2
-Stable tag: 8.0.0
+Stable tag: 8.0.1
 
-Fully customizable plugin to show Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail.
+All-In-One. It shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail in your style.
 
 == Description ==
 
-This plugin shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail. You can customize it's view in any way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image for a post.
+You can customize the view in your way. It uses [amtyThumb](http://wordpress.org/extend/plugins/amtythumb/ "amtyThumb") plugin to extract first image for a post.
 
 Fully customizable. You may control thumbnail size, Title length, appearance, etc.
 If you don't have any image in a post, you can set default image too.
@@ -32,6 +32,8 @@ You can display posts for following with single plugin.
 5. Appearance is fully customizable through widget panel or from short code.
 6. You can test plugin through admin page.
 7. List posts : You can list posts sorted by number of comments, views, last visted time etc. It'll help you
+
+Coming soon : One call function to build theme pages.
 
 = Dependency & Usage=
 
@@ -113,6 +115,9 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+= 8.0.1 =
+* fixed a vry minor and silly bug of broken image
 
 = 8.0.0 =
 * change in template codes for better customized apperance
