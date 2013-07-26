@@ -204,7 +204,7 @@ displayPosts($before_title, $after_title,$title, $thumb_width,$thumb_height,$max
 }
 
 
-function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$contentlength=200,$categoryName = 'All',$widgetType = 'Recent'){
+function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$contentlength=200,$categoryName = 'All',$widgetType = 'Recently Written'){
 	global $wpdb;
 	if ( $title != '' ){
 		echo $before_title . $title . $after_title;
