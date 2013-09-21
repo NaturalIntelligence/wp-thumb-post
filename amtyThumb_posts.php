@@ -1,3 +1,4 @@
+<?php
 /*
 Plugin Name: amtyThumb Posts
 Plugin URI: http://article-stack.com/
