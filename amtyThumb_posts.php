@@ -1,4 +1,3 @@
-<?php
 /*
 Plugin Name: amtyThumb Posts
 Plugin URI: http://article-stack.com/
@@ -7,7 +6,7 @@ You may customize it in any way. It uses amtyThumb plugin to extracts first imag
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 8.1.1
+Version: 8.1.2
 Author URI: http://article-stack.com/
 */
 include("supportingfunctions.php");
@@ -305,21 +304,6 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
             <!-- <a href="<?php echo "http://article-stack.com"; ?>">*</a> -->
             <div style="clear:both;"></div>
 	<?php
-}//function end
-
-function lead_img_thumb_post($w=70,$h=70,$default_src='',$post_id) {
-	
-	if (function_exists('amty_lead_img')) {
-		if($post_id != '')
-		  $img_url = amty_lead_img($w,$h,1,'','',0,$post_id,'',$default_src);
-		else
-		  $img_url = amty_lead_img($w,$h,1,'','',0,'','',$default_src);
-	}
-	else{
-		echo "amtyThumb plugin is missing";
-		$img_url = "";
-	}
-	return $img_url;
 }//function end
 
 function lead_img_thumb_post($w=70,$h=70,$default_src='',$post_id,$constrain) {
