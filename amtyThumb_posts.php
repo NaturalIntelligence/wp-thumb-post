@@ -7,7 +7,7 @@ You may customize it in any way. It uses amtyThumb plugin to extracts first imag
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 8.0.1
+Version: 8.1.1
 Author URI: http://article-stack.com/
 */
 include("supportingfunctions.php");
@@ -115,6 +115,12 @@ function form( $instance ) {
 			<input id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" value="<?php echo $instance['height']; ?>" style="width:30px;" />
 		</p>
 
+		<p>
+			<select id="<?php echo $this->get_field_id( 'constrain' ); ?>" name="<?php echo $this->get_field_name( 'constrain' ); ?>" style="width:100px;" >
+				<option <?php if ( 'stretch' == $instance['widgettype'] ) echo 'selected="selected"'; ?>>stretch</option>
+				<option <?php if ( 'Resize by ratio' == $instance['widgettype'] ) echo 'selected="selected"'; ?>>Resize by ratio</option>
+			</select>
+		</p>
 		<!-- Show default image Checkbox -->
 		<?php /*<p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['show_default'], true ); ?> id="<?php echo $this->get_field_id( 'show_default'); ?>" name="<?php echo $this->get_field_name( 'show_default'); ?>" />
@@ -162,6 +168,7 @@ function form( $instance ) {
 		$title = apply_filters('widget_title', $instance['title'] );
 		$width = $instance['width'];
 		$height = $instance['height'];
+		$constrain = $instance['constrain'];
 		$maxpost = $instance['maxpost'];
 		$default_img_path = $instance['default_img_path'];			//path for default image in case of no image in post
 		$pretag = $instance['pretag'];
@@ -176,7 +183,7 @@ function form( $instance ) {
 		echo $before_widget;
 		
 		
-		displayPosts($before_title ,$after_title,$title, $width ,$height ,$maxpost ,$default_img_path,$pretag ,$template,$posttag,$titlelen,$contentlength ,$categoryName ,$widgetType);
+		displayPosts($before_title ,$after_title,$title, $width ,$height , $constrain, $maxpost ,$default_img_path,$pretag ,$template,$posttag,$titlelen,$contentlength ,$categoryName ,$widgetType);
 		/* After widget (defined by themes). */
 		echo $after_widget;
 	}
@@ -188,6 +195,7 @@ function amtyThumb_shortcode( $attr, $content = null ) {
 								   'after_title' => '</h2>',
 					 'thumb_width' => '70',
 					 'thumb_height' => '70',
+					 'constrain' => '1',
 					 'default_img_path' => '',
 					 'pretag' => '',
 					 'template' => '',					 
@@ -199,12 +207,12 @@ function amtyThumb_shortcode( $attr, $content = null ) {
 					 'widgettype' => 'Recently Written' //'Recent','Random','Most Commented'
 					 ), $attr ) );
 
-displayPosts($before_title, $after_title,$title, $thumb_width,$thumb_height,$max_post,$default_img_path,$pretag,$template,$posttag,$title_len,$contentlength,$category,$widgettype);
+displayPosts($before_title, $after_title,$title, $thumb_width,$thumb_height,$constrain,$max_post,$default_img_path,$pretag,$template,$posttag,$title_len,$contentlength,$category,$widgettype);
 
 }
 
 
-function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$contentlength=200,$categoryName = 'All',$widgetType = 'Recently Written'){
+function displayPosts($before_title, $after_title, $title = '',$width = 70,$height = 70 ,$constrain=1, $maxpost  = 10 ,$default_img_path = '',$pretag = '',$template , $posttag = '',$titlelen = 30,$contentlength=200,$categoryName = 'All',$widgetType = 'Recently Written'){
 	global $wpdb;
 	if ( $title != '' ){
 		echo $before_title . $title . $after_title;
@@ -282,7 +290,7 @@ function displayPosts($before_title, $after_title, $title = '',$width = 70,$heig
 				if ($pos === false) { 
 					//Do nothing
 				}else{
-					$imgpath = lead_img_thumb_post($width ,$height ,$default_img_path , $post->ID );
+					$imgpath = lead_img_thumb_post($width ,$height ,$default_img_path , $post->ID , $constrain);
 					//echo "<br />" . $imgpath;
 					$temp = str_replace("%POST_THUMB%", $imgpath , $temp);
 				}
@@ -303,9 +311,24 @@ function lead_img_thumb_post($w=70,$h=70,$default_src='',$post_id) {
 	
 	if (function_exists('amty_lead_img')) {
 		if($post_id != '')
-		  $img_url = amty_lead_img($w,$h,1,$default_src,'',0,$post_id);
+		  $img_url = amty_lead_img($w,$h,1,'','',0,$post_id,'',$default_src);
 		else
-		  $img_url = amty_lead_img($w,$h,1,'','',0,'');
+		  $img_url = amty_lead_img($w,$h,1,'','',0,'','',$default_src);
+	}
+	else{
+		echo "amtyThumb plugin is missing";
+		$img_url = "";
+	}
+	return $img_url;
+}//function end
+
+function lead_img_thumb_post($w=70,$h=70,$default_src='',$post_id,$constrain) {
+	
+	if (function_exists('amty_lead_img')) {
+		if($post_id != '')
+		  $img_url = amty_lead_img($w,$h,$constrain,'','',0,$post_id,'y',$default_src);
+		else
+		  $img_url = amty_lead_img($w,$h,$constrain,'','',0,'','y',$default_src);
 	}
 	else{
 		echo "amtyThumb plugin is missing";

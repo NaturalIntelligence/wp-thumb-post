@@ -3,8 +3,8 @@ Contributors: Amit Gpta
 Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
 Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 8.0.1
+Tested up to: 3.5
+Stable tag: 8.1.1
 
 All-In-One. It shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail in your style.
 
@@ -61,6 +61,7 @@ Possible parameters with default values
 	'after_title' => '</h2>',
 	'thumb_width' => '70',
 	'thumb_height' => '70',
+	'constrain' => '1',
 	'default_img_path' => '', //should be set
 	'pretag' => '',
 	'template' => '',	//<li><img src="%POST_THUMB%" /><a href="%POST_URL%"  title="%POST_TITLE%">%POST_TITLE%</a></li>				 
@@ -115,6 +116,11 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
 
 == Changelog ==
+
+= 8.1.1 =
+* fixed a bug of calling amtyThumb plugin
+* Now user can decide wheter an image should resized in ratio or be stretched as per given dimentions.
+
 
 = 8.0.1 =
 * fixed a vry minor and silly bug of broken image
@@ -175,5 +181,18 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 
 == Upgrade Notice ==
 
-= 7.1.0 =
-* Addtion of %SHORT_TITLE% template code to display short title
+= 8.1.1 =
+* fixed a bug of calling amtyThumb plugin
+* Now user can decide wheter an image should resized in ratio or be stretched as per given dimentions.
+
+
+= 8.0.1 =
+* fixed a vry minor and silly bug of broken image
+
+= 8.0.0 =
+* change in template codes for better customized apperance
+* removed dependecny from 2 external plugins for analysing number of views and last visit time.
+* Now you can display stripped post content
+* extra functions to get views count or last visit time
+* admin panel for admin to view posts stats.
+* small code imporvment to spped up processing
