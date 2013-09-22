@@ -4,7 +4,7 @@ Donate link: http://article-stack.com/
 Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 8.1.2
+Stable tag: 8.1.3
 
 All-In-One. It shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail in your style.
 
@@ -117,6 +117,9 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 
 == Changelog ==
 
+= 8.1.3 =
+* fixed getAmtyViewCount($pid) function
+
 = 8.1.2 =
 * removed duplicate error. causing plugin instalation failure
 
@@ -183,6 +186,9 @@ For live example visit [article-stack](http://article-stack.com/other/amty-thumb
 * Don't reduce the image size. Just resize its height & width.
 
 == Upgrade Notice ==
+
+= 8.1.3 =
+* fixed getAmtyViewCount($pid) function
 
 = 8.1.2 =
 * removed duplicate error. causing plugin instalation failure
