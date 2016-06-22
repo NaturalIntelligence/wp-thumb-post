@@ -1,6 +1,6 @@
 === amtyThumb posts ===
 Contributors: Amit Gpta
-Donate link: http://article-stack.com/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC
 Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
 Requires at least: 3.0
 Tested up to: 3.5
@@ -23,6 +23,9 @@ You can display posts for following with single plugin.
 5. Untouched articles
 6. Recently submitted posts
 
+*Note : I am pausing it's development for some time due to other priorities. However I'll keep supporting for any bug, small features, and any request.*
+
+You can know more about furhter releases, support, plans, and my other developments on [git](https://github.com/NaturalIntelligence).
 
 = Features over other plugins =
 
@@ -88,7 +91,7 @@ Possible parameters with default values
 1. getAmtyViewCount(post_id) to get number of views.
 2. getLastVisitedTime(post_id) to get last visit time.
 
-For any doubt or query visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
+For any doubt or query visit [wp-thumb-post](https://github.com/NaturalIntelligence/wp-thumb-post/)
 
 
 == Frequently Asked Questions ==
@@ -108,12 +111,11 @@ Check whether you have PHP GD library installed.
 No, It supports only jpg,png and gif. I hadn't tested it for others.
 
 
-For more queries visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
+For any doubt or query visit [wp-thumb-post](https://github.com/NaturalIntelligence/wp-thumb-post/)
 
 == Screenshots ==
 
-For live example visit [article-stack](http://article-stack.com/other/amty-thumb-recent-is-now-amty-thumb-posts.amty "amty thumb recent")
-	or [Think Zara Hatke](http://thinkzarahatke.com "Colletion of unique thinks")
+visit [my post](https://articlestack.wordpress.com/2011/04/26/amtythumb-is-separated-from-amty-thumb-post/)
 
 == Changelog ==
 
