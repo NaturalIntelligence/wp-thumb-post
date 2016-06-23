@@ -38,7 +38,7 @@ You can know more about furhter releases, support, plans, and my other developme
 
 Coming soon : One call function to build theme pages.
 
-= Dependency & Usage=
+= Dependency & Usage =
 
 1. amtyThumb plugin must be installed for image extraction.
 
