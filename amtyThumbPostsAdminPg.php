@@ -1,3 +1,6 @@
+<?php if ( ! defined( 'ABSPATH' ) )
+     exit;
+?>
 <div class="wrap">
 <center><h2>amtyThumbPosts Admin page</h2></center>
 <br />
