@@ -1,10 +1,10 @@
 === amtyThumb posts ===
-Contributors: Amit Gpta
+Contributors: Amit Gupta
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC
 Tags: thumbnail, recent, random, popular, post, amty, image, widget, shortcode, mostly-viewed, rarely-viewed, recently-viewed, most-commented, last-viewed
 Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 8.1.4
+Tested up to: 4.6.1
+Stable tag: 8.2.0
 
 All-In-One. It shows Recently written, Recently viewed, Random, Mostly & Rarely Viewd, Mostly Commented posts with thumbnail in your style.
 
@@ -209,3 +209,6 @@ visit [my post](https://articlestack.wordpress.com/2011/04/26/amtythumb-is-separ
 * extra functions to get views count or last visit time
 * admin panel for admin to view posts stats.
 * small code imporvment to spped up processing
+
+= 8.2.0 =
+* Restrict direct access to the admin page
