@@ -7,7 +7,7 @@ You may customize it in any way. It uses amtyThumb plugin to extracts first imag
 Fully customizable. You may control thumbnail size, Title length, apperance, and alomst everything
 
 Author: Amit Gupta
-Version: 8.1.3
+Version: 8.2.0
 Author URI: http://article-stack.com/
 */
 include("supportingfunctions.php");
